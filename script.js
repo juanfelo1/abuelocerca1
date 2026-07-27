@@ -4,77 +4,90 @@
    memoria del navegador. Los 5 casos son datos de DEMOSTRACIÓN.
    ========================================================= */
 
-/* ---------- 1. DATOS DE DEMOSTRACIÓN ---------- */
-const CASES = [
+/* ---------- 1. DATOS DE LOS BENEFICIARIOS ----------
+   Para AGREGAR o EDITAR una persona, solo modifica este arreglo.
+   No necesitas tocar el HTML ni el resto del script.
+
+   Campos:
+   - id:                identificador único, sin espacios (se usa en la URL)
+   - name:               nombre
+   - age:                edad
+   - city:                ciudad
+   - photo:              ruta a la foto en assets/ (si no existe o falla,
+                         se muestra automáticamente un color con su inicial)
+   - shortDescription:   descripción corta (se ve en las tarjetas y el detalle)
+   - story:              historia personal más larga
+   - need:               necesidad específica
+   - goal:                meta de recaudación en pesos (número, sin puntos)
+   - raised:             monto ya recaudado en pesos (número, sin puntos)
+   - video:              URL de YouTube en formato "embed"
+                         (https://www.youtube.com/embed/VIDEO_ID)
+------------------------------------------------------------ */
+const beneficiaries = [
   {
     id: "maria",
     name: "María",
     age: 78,
     city: "Medellín",
-    initials: "M",
-    avatarClass: "avatar-0",
-    short: "Vive sola en el barrio Manrique y cocina para ella misma cada día.",
+    photo: "assets/maria.jpg",
+    shortDescription: "María necesita ayuda para completar su mercado mensual.",
+    story: "María tiene 78 años y vive en Medellín. Actualmente recibe apoyo de una organización social y necesita ayuda para completar su alimentación mensual.",
     need: "Mercado mensual",
-    needDetail: "Un mercado básico que le alcance para todo el mes: arroz, huevos, verduras, aceite y proteína.",
     goal: 180000,
     raised: 130000,
-    story: "María vivió toda su vida en Manrique. Después de que su esposo falleció, sus ingresos se redujeron a lo mínimo. Camina cada semana hasta la tienda del barrio, pero varios meses el dinero no le alcanza para cubrir el mercado completo. Una organización aliada la visita mensualmente para verificar su situación."
+    video: "https://www.youtube.com/embed/VIDEO_ID"
   },
   {
     id: "carlos",
     name: "Carlos",
     age: 81,
     city: "Medellín",
-    initials: "C",
-    avatarClass: "avatar-1",
-    short: "Perdió su fórmula de gafas hace un año y ya casi no puede leer.",
+    photo: "assets/carlos.jpg",
+    shortDescription: "Carlos perdió su fórmula de gafas hace un año y ya casi no puede leer.",
+    story: "Carlos fue sastre durante más de 40 años. Hoy, sin gafas adecuadas, no puede leer la prensa ni coser como antes. La pérdida de visión también le dificulta moverse solo por el barrio. Con unas gafas nuevas podría recuperar buena parte de su independencia diaria.",
     need: "Gafas nuevas",
-    needDetail: "Una fórmula optométrica actualizada y un par de gafas para lectura y visión de lejos.",
     goal: 250000,
     raised: 112500,
-    story: "Carlos fue sastre durante más de 40 años. Hoy, sin gafas adecuadas, no puede leer la prensa ni coser como antes. La pérdida de visión también le dificulta moverse solo por el barrio. Con unas gafas nuevas podría recuperar buena parte de su independencia diaria."
+    video: "https://www.youtube.com/embed/VIDEO_ID"
   },
   {
     id: "ana",
     name: "Ana",
     age: 76,
     city: "Medellín",
-    initials: "A",
-    avatarClass: "avatar-2",
-    short: "Cuida de su nieto los fines de semana y estira cada peso del mercado.",
+    photo: "assets/ana.jpg",
+    shortDescription: "Ana cuida de su nieto los fines de semana y estira cada peso del mercado.",
+    story: "Ana recibe una pensión mínima que apenas cubre sus servicios públicos. Aun así, cada fin de semana recibe a su nieto y comparte con él lo poco que tiene. Un mercado básico le permitiría llegar tranquila a fin de mes sin sacrificar comidas.",
     need: "Mercado básico",
-    needDetail: "Alimentos no perecederos y productos de aseo personal para completar el mes.",
     goal: 150000,
     raised: 75000,
-    story: "Ana recibe una pensión mínima que apenas cubre sus servicios públicos. Aun así, cada fin de semana recibe a su nieto y comparte con él lo poco que tiene. Un mercado básico le permitiría llegar tranquila a fin de mes sin sacrificar comidas."
+    video: "https://www.youtube.com/embed/VIDEO_ID"
   },
   {
     id: "jorge",
     name: "Jorge",
     age: 83,
     city: "Medellín",
-    initials: "J",
-    avatarClass: "avatar-3",
-    short: "Una ventana rota de su casa lo deja expuesto al frío de la noche.",
+    photo: "assets/jorge.jpg",
+    shortDescription: "Una ventana rota de su casa deja a Jorge expuesto al frío de la noche.",
+    story: "Jorge vive solo en una casa que ha ido deteriorándose con los años. Una ventana de su habitación se rompió durante la temporada de lluvias y no ha podido repararla. Las noches frías afectan directamente su salud, por lo que la reparación es una necesidad urgente.",
     need: "Reparación de ventana",
-    needDetail: "Vidrio, marco y mano de obra para reparar una ventana rota en su habitación.",
     goal: 300000,
     raised: 120000,
-    story: "Jorge vive solo en una casa que ha ido deteriorándose con los años. Una ventana de su habitación se rompió durante la temporada de lluvias y no ha podido repararla. Las noches frías afectan directamente su salud, por lo que la reparación es una necesidad urgente."
+    video: "https://www.youtube.com/embed/VIDEO_ID"
   },
   {
     id: "carmen",
     name: "Carmen",
     age: 79,
     city: "Medellín",
-    initials: "C",
-    avatarClass: "avatar-4",
-    short: "Después de una cirugía reciente, necesita apoyo con su alimentación.",
+    photo: "assets/carmen.jpg",
+    shortDescription: "Después de una cirugía reciente, Carmen necesita apoyo con su alimentación.",
+    story: "Carmen tuvo una cirugía hace algunas semanas y su movilidad todavía es limitada. Cocinar para ella misma le resulta difícil, así que necesita alimentos que pueda preparar con poco esfuerzo mientras continúa su recuperación.",
     need: "Suministro de alimentos",
-    needDetail: "Alimentos de fácil preparación mientras se recupera de una cirugía reciente.",
     goal: 120000,
     raised: 60000,
-    story: "Carmen tuvo una cirugía hace algunas semanas y su movilidad todavía es limitada. Cocinar para ella misma le resulta difícil, así que necesita alimentos que pueda preparar con poco esfuerzo mientras continúa su recuperación."
+    video: "https://www.youtube.com/embed/VIDEO_ID"
   }
 ];
 
@@ -106,8 +119,8 @@ function pct(raised, goal) {
   return Math.min(100, Math.round((raised / goal) * 100));
 }
 
-function getCase(id) {
-  return CASES.find((c) => c.id === id);
+function getBeneficiary(id) {
+  return beneficiaries.find((b) => b.id === id);
 }
 
 function escapeHtml(str) {
@@ -118,7 +131,31 @@ function escapeHtml(str) {
 
 /* ---------- 3. FRAGMENTOS REUTILIZABLES ---------- */
 function avatarHTML(item, size) {
-  return `<div class="avatar ${item.avatarClass} ${size}"><span>${item.initials}</span></div>`;
+  // El color y la inicial se calculan automáticamente a partir del nombre
+  // y la posición del beneficiario, así que no hay que definirlos a mano.
+  const idx = beneficiaries.findIndex((b) => b.id === item.id);
+  const colorClass = "avatar-" + (((idx >= 0 ? idx : 0) % 5) + 5) % 5;
+  const initials = item.name.charAt(0).toUpperCase();
+  // Si hay foto, se muestra encima del color de respaldo. Si la foto no
+  // existe o no carga (404), la imagen se quita sola y queda el color
+  // con la inicial — así el sitio nunca se ve roto por falta de una foto.
+  const photoImg = item.photo
+    ? `<img src="${item.photo}" alt="Foto de ${escapeHtml(item.name)}" class="media-photo" loading="lazy" onerror="this.remove()">`
+    : "";
+  return `<div class="avatar ${colorClass} ${size}"><span>${initials}</span>${photoImg}</div>`;
+}
+
+function videoHTML(item) {
+  if (!item.video) return "";
+  return `
+    <div class="video-section">
+      <h3 class="subsection-title">Conoce su historia</h3>
+      <div class="video-frame">
+        <iframe src="${item.video}" title="Video de ${escapeHtml(item.name)}" loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>`;
 }
 
 function progressHTML(raised, goal) {
@@ -147,7 +184,7 @@ function caseCardHTML(c) {
           </div>
           <span class="demo-flag">Demo</span>
         </div>
-        <p class="case-card-desc">${c.short}</p>
+        <p class="case-card-desc">${c.shortDescription}</p>
         <div class="case-card-need">Necesidad: ${c.need}</div>
         ${progressHTML(c.raised, c.goal)}
         <div class="case-card-foot">
@@ -160,7 +197,7 @@ function caseCardHTML(c) {
 
 /* ---------- 4. VISTAS ---------- */
 function renderHome() {
-  const featured = CASES.slice(0, 3);
+  const featured = beneficiaries.slice(0, 3);
   return `
     <section class="hero">
       <div class="hero-bg-blob" aria-hidden="true"></div>
@@ -175,16 +212,16 @@ function renderHome() {
           </div>
           <div class="hero-stats">
             <div class="stat"><b>5</b><span>Casos piloto activos</span></div>
-            <div class="stat"><b>${formatCOP(CASES.reduce((s, c) => s + c.raised, 0))}</b><span>Intención registrada</span></div>
+            <div class="stat"><b>${formatCOP(beneficiaries.reduce((s, c) => s + c.raised, 0))}</b><span>Intención registrada</span></div>
             <div class="stat"><b>100%</b><span>Verificados por aliados</span></div>
           </div>
         </div>
         <div class="hero-art">
           <div class="hero-card">
-            ${avatarHTML(CASES[0], "avatar-lg")}
-            <div class="hero-card-name">${CASES[0].name}, ${CASES[0].age} años</div>
-            <div class="hero-card-meta">${CASES[0].city} · ${CASES[0].need}</div>
-            ${progressHTML(CASES[0].raised, CASES[0].goal)}
+            ${avatarHTML(beneficiaries[0], "avatar-lg")}
+            <div class="hero-card-name">${beneficiaries[0].name}, ${beneficiaries[0].age} años</div>
+            <div class="hero-card-meta">${beneficiaries[0].city} · ${beneficiaries[0].need}</div>
+            ${progressHTML(beneficiaries[0].raised, beneficiaries[0].goal)}
           </div>
           <div class="hero-float-badge">
             <span style="font-size:20px">🧵</span>
@@ -305,7 +342,7 @@ function renderCasesList() {
           <span><strong>Casos de demostración.</strong> Estos 5 perfiles son piloto mientras conectamos casos reales verificados. Ningún dato personal aquí corresponde a una persona real.</span>
         </div>
         <div class="cases-grid">
-          ${CASES.map(caseCardHTML).join("")}
+          ${beneficiaries.map(caseCardHTML).join("")}
         </div>
       </div>
     </section>
@@ -313,7 +350,7 @@ function renderCasesList() {
 }
 
 function renderCaseDetail(id) {
-  const c = getCase(id);
+  const c = getBeneficiary(id);
   if (!c) return renderNotFound();
   return `
     <div class="case-detail wrap">
@@ -326,10 +363,18 @@ function renderCaseDetail(id) {
             <span class="demo-flag">Caso demo</span>
           </div>
           <p class="meta-line">${c.age} años · ${c.city}</p>
-          <p class="story">${c.story}</p>
+          <p class="story-short">${c.shortDescription}</p>
+
+          ${videoHTML(c)}
+
+          <div class="story-section">
+            <h3 class="subsection-title">Su historia</h3>
+            <p class="story">${c.story}</p>
+          </div>
+
           <div class="need-box">
             <h4>Necesidad específica</h4>
-            <p>${c.needDetail}</p>
+            <p>${c.need}</p>
           </div>
         </div>
 
@@ -354,7 +399,7 @@ function renderCaseDetail(id) {
 }
 
 function renderDonationForm(id) {
-  const c = getCase(id);
+  const c = getBeneficiary(id);
   if (!c) return renderNotFound();
   const preselected = sessionStorage.getItem("ac_amount_" + id) || "";
   return `
@@ -555,7 +600,7 @@ function attachViewHandlers(segments) {
   const form = document.getElementById("donationForm");
   if (form) {
     const caseId = segments[1];
-    const caseObj = getCase(caseId);
+    const caseObj = getBeneficiary(caseId);
 
     // resaltar preferencia seleccionada
     const prefGrid = document.getElementById("prefGrid");
