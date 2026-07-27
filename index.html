@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abuelo Cerca — Una pequeña ayuda puede cambiar el día de un adulto mayor</title>
+<meta name="description" content="Conoce personas mayores en Colombia que necesitan apoyo para cubrir necesidades específicas y ayúdalas con una contribución.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ====== ENCABEZADO / NAVEGACIÓN ====== -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#/" class="brand" aria-label="Abuelo Cerca, ir al inicio">
+      <img src="assets/logo.svg" alt="" width="36" height="36">
+      <span>Abuelo Cerca</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <a href="#/" data-route="/">Inicio</a>
+      <a href="#/casos" data-route="/casos">Casos</a>
+      <a href="#/#como-funciona" data-anchor="como-funciona">Cómo funciona</a>
+      <a href="#/#confianza" data-anchor="confianza">Confianza</a>
+      <a href="#/#faq" data-anchor="faq">Preguntas</a>
+    </nav>
+
+    <a href="#/casos" class="btn btn-primary btn-nav-cta">Quiero ayudar</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====== CONTENEDOR DE VISTAS (renderizado por script.js) ====== -->
+<main id="app" tabindex="-1"></main>
+
+<!-- ====== PIE DE PÁGINA ====== -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo.svg" alt="" width="32" height="32">
+      <span>Abuelo Cerca</span>
+      <p>Una plataforma piloto que conecta personas dispuestas a ayudar con adultos mayores verificados en Colombia.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <a href="#/">Inicio</a>
+      <a href="#/casos">Casos</a>
+      <a href="#/#como-funciona">Cómo funciona</a>
+      <a href="#/#faq">Preguntas frecuentes</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Confianza</h4>
+      <a href="#/#confianza">Verificación de casos</a>
+      <a href="#/#confianza">Protección de datos</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="mailto:hola@abuelocerca.co">hola@abuelocerca.co</a>
+      <span class="footer-demo-note">Proyecto piloto — datos de demostración</span>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Abuelo Cerca. Proyecto piloto MVP, hecho en Medellín, Colombia.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
