@@ -35,7 +35,7 @@ const beneficiaries = [
     need: "Mercado mensual",
     goal: 180000,
     raised: 130000,
-    video: "https://www.youtube.com/embed/fAPiCDMZX2U"
+    video: "https://www.youtube.com/shorts/fAPiCDMZX2U"
   },
   {
     id: "carlos",
