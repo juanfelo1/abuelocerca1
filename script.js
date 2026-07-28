@@ -37,19 +37,6 @@ const beneficiaries = [
     raised: 130000,
     video: "https://www.youtube.com/embed/VIDEO_ID"
   },
-    {
-    id: "marujita",
-    name: "Doña Marujita",
-    age: 88,
-    city: "Medellín",
-    photo: "assets/marujita.jpg",
-    shortDescription: "Una ventana rota de su casa la deja expuesta al frío de la noche.",
-    story: "Doña Marujita vive sola en una casa que ha ido deteriorándose con los años. Una ventana de su habitación se rompió durante la temporada de lluvias y no ha podido repararla. Las noches frías afectan directamente su salud, por lo que la reparación es una necesidad urgente.",
-    need: "Vidrio, marco y mano de obra para reparar una ventana rota en su habitación.",
-    goal: 500000,
-    raised: 20000,
-    video: "https://www.youtube.com/embed/fAPiCDMZX2U"
-  }
   {
     id: "carlos",
     name: "Carlos",
