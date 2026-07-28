@@ -9,19 +9,19 @@
    No necesitas tocar el HTML ni el resto del script.
 
    Campos:
-   - id:                 1
-   - name:               DOÑA MARUJITA
-   - age:                88 AÑOS
-   - city:               MEDELLIN
+   - id:                identificador único, sin espacios (se usa en la URL)
+   - name:               nombre
+   - age:                edad
+   - city:                ciudad
    - photo:              ruta a la foto en assets/ (si no existe o falla,
                          se muestra automáticamente un color con su inicial)
-   - shortDescription:   Una ventana rota de su casa lo deja expuesto al frío de la noche.
-   - story:              Jorge vive solo en una casa que ha ido deteriorándose con los años. Una ventana de su habitación se rompió durante la temporada de lluvias y no ha podido repararla. Las noches frías afectan directamente su salud, por lo que la reparación es una necesidad urgente.
-   - need:               Vidrio, marco y mano de obra para reparar una ventana rota en su habitación.
-   - goal:               500000 
-   - raised:             20000
-   - video:              video: "https://www.youtube.com/embed/fAPiCDMZX2U"
-                         
+   - shortDescription:   descripción corta (se ve en las tarjetas y el detalle)
+   - story:              historia personal más larga
+   - need:               necesidad específica
+   - goal:                meta de recaudación en pesos (número, sin puntos)
+   - raised:             monto ya recaudado en pesos (número, sin puntos)
+   - video:              URL de YouTube en formato "embed"
+                         (https://www.youtube.com/embed/VIDEO_ID)
 ------------------------------------------------------------ */
 const beneficiaries = [
   {
@@ -145,13 +145,31 @@ function avatarHTML(item, size) {
   return `<div class="avatar ${colorClass} ${size}"><span>${initials}</span>${photoImg}</div>`;
 }
 
+// Acepta cualquier formato de URL de YouTube que copies del navegador
+// (video normal, youtu.be, o Shorts) y lo convierte al formato "embed"
+// que necesita el iframe para reproducirse dentro de la página.
+function toEmbedUrl(url) {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+  const patterns = [
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{6,})/,
+    /youtu\.be\/([a-zA-Z0-9_-]{6,})/
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return `https://www.youtube.com/embed/${match[1]}`;
+  }
+  return url; // si no coincide con ningún patrón conocido, se deja tal cual
+}
+
 function videoHTML(item) {
   if (!item.video) return "";
   return `
     <div class="video-section">
       <h3 class="subsection-title">Conoce su historia</h3>
       <div class="video-frame">
-        <iframe src="${item.video}" title="Video de ${escapeHtml(item.name)}" loading="lazy"
+        <iframe src="${toEmbedUrl(item.video)}" title="Video de ${escapeHtml(item.name)}" loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
       </div>
