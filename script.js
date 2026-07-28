@@ -34,7 +34,7 @@ const beneficiaries = [
     story: "María tiene 78 años y vive en Medellín. Actualmente recibe apoyo de una organización social y necesita ayuda para completar su alimentación mensual.",
     need: "Mercado mensual",
     goal: 180000,
-    raised: 130000,
+    raised: 30000,
     video: "https://www.youtube.com/shorts/fAPiCDMZX2U"
   },
   {
