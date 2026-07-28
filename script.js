@@ -9,19 +9,19 @@
    No necesitas tocar el HTML ni el resto del script.
 
    Campos:
-   - id:                identificador único, sin espacios (se usa en la URL)
-   - name:               nombre
-   - age:                edad
-   - city:                ciudad
+   - id:                 1
+   - name:               DOÑA MARUJITA
+   - age:                88 AÑOS
+   - city:               MEDELLIN
    - photo:              ruta a la foto en assets/ (si no existe o falla,
                          se muestra automáticamente un color con su inicial)
-   - shortDescription:   descripción corta (se ve en las tarjetas y el detalle)
-   - story:              historia personal más larga
-   - need:               necesidad específica
-   - goal:                meta de recaudación en pesos (número, sin puntos)
-   - raised:             monto ya recaudado en pesos (número, sin puntos)
-   - video:              URL de YouTube en formato "embed"
-                         (https://www.youtube.com/embed/VIDEO_ID)
+   - shortDescription:   Una ventana rota de su casa lo deja expuesto al frío de la noche.
+   - story:              Jorge vive solo en una casa que ha ido deteriorándose con los años. Una ventana de su habitación se rompió durante la temporada de lluvias y no ha podido repararla. Las noches frías afectan directamente su salud, por lo que la reparación es una necesidad urgente.
+   - need:               Vidrio, marco y mano de obra para reparar una ventana rota en su habitación.
+   - goal:               500000 
+   - raised:             20000
+   - video:              video: "https://www.youtube.com/embed/fAPiCDMZX2U"
+                         
 ------------------------------------------------------------ */
 const beneficiaries = [
   {
