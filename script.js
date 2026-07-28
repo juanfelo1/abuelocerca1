@@ -50,7 +50,6 @@ const beneficiaries = [
     raised: 20000,
     video: "https://www.youtube.com/embed/fAPiCDMZX2U"
   }
-];
   {
     id: "carlos",
     name: "Carlos",
