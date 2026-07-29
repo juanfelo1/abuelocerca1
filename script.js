@@ -641,21 +641,49 @@ function attachViewHandlers(segments) {
     amountField.addEventListener("input", refreshRecap);
     refreshRecap();
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!validateForm(form)) return;
+    form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!validateForm(form)) return;
 
-      const data = {
-        name: form.fName.value.trim(),
-        whatsapp: form.fWhatsapp.value.trim(),
-        email: form.fEmail.value.trim(),
-        amount: form.fAmount.value,
-        preference: form.querySelector('input[name="preference"]:checked').value
-      };
+  const data = {
+    name: form.fName.value.trim(),
+    whatsapp: form.fWhatsapp.value.trim(),
+    email: form.fEmail.value.trim(),
+    amount: form.fAmount.value,
+    preference: form.querySelector('input[name="preference"]:checked').value,
+    beneficiary: caseObj.name
+  };
 
-      sessionStorage.removeItem("ac_amount_" + caseId);
-      document.getElementById("formArea").innerHTML = renderConfirmation(data, caseObj);
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6FmwmvahgY58LnGWHSy5KfK2wWtkbc8edRHynuZ6k2HH7W3wIaMrVrLiws0u48VIJyQ/exec";
+
+  try {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        nombre: data.name,
+        whatsapp: data.whatsapp,
+        email: data.email,
+        beneficiario: data.beneficiary,
+        valor: data.amount,
+        tipoAyuda: data.preference,
+        mensaje: ""
+      })
     });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || "No se pudo registrar la información");
+    }
+
+    sessionStorage.removeItem("ac_amount_" + caseId);
+    document.getElementById("formArea").innerHTML = renderConfirmation(data, caseObj);
+
+  } catch (error) {
+    console.error("Error al registrar donación:", error);
+    alert("No pudimos registrar tu información. Por favor intenta nuevamente.");
+  }
+});
   }
 }
 
